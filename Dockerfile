@@ -44,7 +44,7 @@ COPY --from=frontend /frontend/note_app/build /app/client/build
 RUN npm install --production
 
 # Expose the port where the backend will run
-EXPOSE 5000
+EXPOSE 8000
 
 # Start the backend server
 CMD ["npm", "start"]
