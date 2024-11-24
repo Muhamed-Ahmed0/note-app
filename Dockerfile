@@ -17,7 +17,7 @@ COPY backend/ .
 FROM node:16 AS frontend
 
 # Set working directory for the frontend
-WORKDIR /frontend/note_app  # Ensure this is the correct location for your index.html
+WORKDIR /frontend/note_app
 
 # Copy frontend package files
 COPY frontend/note_app/package.json frontend/note_app/package-lock.json ./
