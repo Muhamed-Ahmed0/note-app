@@ -1,45 +1,45 @@
 # Step 1: Set up the base image for the backend
 FROM node:16 AS backend
 
-# Step 2: Set the working directory for the backend
+# Set the working directory for the backend
 WORKDIR /app
 
-# Step 3: Copy the backend package.json and install dependencies
-COPY server/package.json server/package-lock.json ./
+# Copy the backend package.json and install dependencies
+COPY backend/package.json backend/package-lock.json ./
 RUN npm install
 
-# Step 4: Copy the rest of the backend application
-COPY server/ .
+# Copy the rest of the backend application
+COPY backend/ .
 
-# Step 5: Build the React frontend
+# Step 2: Set up the frontend
 FROM node:16 AS frontend
 
-# Set working directory for frontend
-WORKDIR /client
+# Set the working directory for the frontend
+WORKDIR /frontend
 
-# Copy the React frontend's package.json and install dependencies
-COPY client/package.json client/package-lock.json ./
+# Copy the frontend package.json and install dependencies
+COPY frontend/package.json frontend/package-lock.json ./
 RUN npm install
 
 # Build the React app for production
 RUN npm run build
 
-# Step 6: Set up a final image with both frontend and backend
+# Step 3: Final stage to merge the backend and frontend into one image
 FROM node:16
 
-# Set working directory for backend
+# Set the working directory for the app
 WORKDIR /app
 
-# Copy the backend from the 'backend' stage
+# Copy the backend files from the 'backend' stage
 COPY --from=backend /app .
 
-# Copy the frontend build from the 'frontend' stage
-COPY --from=frontend /client/build /app/client/build
+# Copy the frontend build files from the 'frontend' stage
+COPY --from=frontend /frontend/build /app/client/build
 
-# Step 7: Install and start the backend server (Express)
+# Install production dependencies for the backend
 RUN npm install --production
 
-# Expose port
+# Expose the port where your backend will run
 EXPOSE 5000
 
 # Start the backend server
