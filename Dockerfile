@@ -1,49 +1,49 @@
-# Step 1: Set up the base image for the backend
+# Step 1: Set up the backend
 FROM node:16 AS backend
 
-# Set the working directory for the backend
+# Set working directory for the backend
 WORKDIR /app
 
-# Copy the backend package.json and package-lock.json into the image
+# Copy backend package files
 COPY backend/package.json backend/package-lock.json ./
 
-# Install the backend dependencies
+# Install backend dependencies
 RUN npm install
 
-# Copy the rest of the backend application files
+# Copy the rest of the backend files
 COPY backend/ .
 
-# Step 2: Set up the frontend
+# Step 2: Set up the frontend (Vite React)
 FROM node:16 AS frontend
 
-# Set the working directory for the frontend
-WORKDIR /frontend
+# Set working directory for the frontend
+WORKDIR /frontend/note_app  # Ensure this is the correct location for your index.html
 
-# Copy the frontend package.json and package-lock.json into the image (from the note_app folder)
+# Copy frontend package files
 COPY frontend/note_app/package.json frontend/note_app/package-lock.json ./
 
-# Install the frontend dependencies
+# Install frontend dependencies
 RUN npm install
 
 # Build the React app for production
 RUN npm run build
 
-# Step 3: Final stage to merge the backend and frontend into one image
+# Step 3: Final stage to combine backend and frontend into one image
 FROM node:16
 
 # Set the working directory for the final app
 WORKDIR /app
 
-# Copy the backend files from the 'backend' stage
+# Copy backend files from the 'backend' stage
 COPY --from=backend /app .
 
-# Copy the frontend build files into the 'client/build' directory (from the frontend build)
-COPY --from=frontend /frontend/build /app/client/build
+# Copy the frontend build files into the 'client/build' directory
+COPY --from=frontend /frontend/note_app/build /app/client/build
 
 # Install production dependencies for the backend
 RUN npm install --production
 
-# Expose the port where your backend will run
+# Expose the port where the backend will run
 EXPOSE 5000
 
 # Start the backend server
