@@ -38,13 +38,13 @@ WORKDIR /app
 COPY --from=backend /app . 
 
 # Copy the frontend build files (including index.html) from the 'frontend' stage
-COPY --from=frontend /frontend/note_app/dist /app/client/dist
+COPY --from=frontend /frontend/note_app/dist /app
 
 # Install production dependencies for the backend
 RUN npm install --production
 
-# Expose the port where the backend will run
-EXPOSE 5000
+# Expose the port where the backend will run (change to 8000)
+EXPOSE 8000
 
 # Start the backend server
 CMD ["npm", "start"]
