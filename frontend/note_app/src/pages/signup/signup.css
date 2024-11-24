@@ -1,0 +1,105 @@
+/* Initial styling for img and main */
+img {
+  position: relative;
+  width: 50%;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(0.4);
+  border-radius: 60px 0px 0px 60px;
+  right: 0;
+  opacity: 0;
+  animation: slideInLeft 0.3s ease-in-out forwards;
+}
+
+.main {
+  position: relative;
+  left: 0;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: slideInRight 0.3s ease-in-out forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Existing styling for layout */
+.big {
+  display: flex;
+}
+
+/* Other styles */
+h1 {
+  font-weight: bold;
+}
+
+#email {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  height: 30px;
+  width: 330px;
+  border: none;
+  font-size: 18px;
+  background-color: beige;
+  border: 2px solid darkgray;
+}
+
+a {
+  font-weight: bolder;
+}
+
+#link {
+  margin: 25px;
+  font-weight: bold;
+}
+
+#username {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  height: 30px;
+  width: 330px;
+  border: none;
+  font-size: 18px;
+  background-color: beige;
+  border: 2px solid darkgray;
+}
+#btn {
+  padding: 10px;
+  border-radius: 10px;
+  height: 55px;
+  width: 350px;
+  background-color: #d2b48c;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#btn:hover {
+  background-color: #d89338;
+}

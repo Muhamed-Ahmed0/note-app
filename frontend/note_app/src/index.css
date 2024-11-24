@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    height: 150px;
+    width: 330px;
+    border: none;
+    font-size: 18px;
+    background-color: beige;
+    border: 2px solid darkgray;
+  }
+}
+@layer components {
+  .inp {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    height: 150px;
+    width: 330px;
+    border: none;
+    font-size: 18px;
+    background-color: beige;
+    border: 2px solid darkgray;
+  }
+}

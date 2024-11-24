@@ -1,0 +1,32 @@
+input {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  height: 45px;
+  width: 330px;
+  background-color: rgb(238, 238, 234);
+  font-size: 18px;
+  border: none;
+}
+
+.search-icon {
+  position: relative;
+  bottom: 40px;
+  left: 290px;
+  cursor: pointer;
+  font-size: 18px;
+  color: rgb(165, 165, 165);
+}
+.del-search {
+  position: absolute;
+  right: 625px;
+  top: 23px;
+  cursor: pointer;
+  font-size: 18px;
+  color: rgb(165, 165, 165);
+}
+
+.del-search,
+.search-icon:hover {
+  color: rgb(0, 0, 0);
+}

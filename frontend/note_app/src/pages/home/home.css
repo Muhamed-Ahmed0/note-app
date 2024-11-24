@@ -1,0 +1,26 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.add {
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: dodgerblue;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 40px;
+  border: none;
+}
+
+.add:hover {
+  transform: scale(1.1);
+  background-color: rgb(99, 212, 216);
+}
